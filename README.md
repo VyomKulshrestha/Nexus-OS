@@ -1,4 +1,4 @@
-# NexusOS — AI System Control Agent
+# Cortex-OS — AI System Control Agent
 
 <p align="center">
   <strong>Control your entire computer with natural language.</strong><br>
@@ -14,9 +14,9 @@
 
 ---
 
-## Why NexusOS?
+## Why Cortex-OS?
 
-Unlike simple command runners, NexusOS is a **true agentic system** with a Plan → Execute → Verify → Retry pipeline:
+Unlike simple command runners, Cortex-OS is a **true agentic system** with a Plan → Execute → Verify → Retry pipeline:
 
 1. **Planner** — LLM converts your natural language into a structured multi-step action plan
 2. **Executor** — Each action is dispatched to native OS APIs (never GUI automation)
@@ -115,7 +115,7 @@ Auto-detects: winget, choco, brew, apt, dnf, pacman
 ## Architecture
 
 ```
-nexusos/
+cortex-os/
 ├── daemon/              # Python backend (agent system)
 │   └── pilot/
 │       ├── agents/      # Planner, Executor, Verifier, Code Sanitizer
