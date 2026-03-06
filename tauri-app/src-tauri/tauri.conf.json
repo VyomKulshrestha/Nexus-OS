@@ -1,0 +1,46 @@
+{
+  "$schema": "https://raw.githubusercontent.com/nickcernis/tauri-docs/refs/heads/next/src/content/docs/_schema/config.schema.json",
+  "productName": "Pilot",
+  "version": "0.1.0",
+  "identifier": "com.pilot.app",
+  "build": {
+    "frontendDist": "../ui/dist",
+    "devUrl": "http://localhost:1420",
+    "beforeDevCommand": "npm run dev",
+    "beforeBuildCommand": "npm run build"
+  },
+  "app": {
+    "windows": [
+      {
+        "title": "Pilot",
+        "width": 700,
+        "height": 500,
+        "resizable": true,
+        "decorations": false,
+        "transparent": true,
+        "alwaysOnTop": true,
+        "center": true,
+        "visible": false
+      }
+    ],
+    "trayIcon": {
+      "iconPath": "icons/icon.svg",
+      "iconAsTemplate": true
+    },
+    "security": {
+      "csp": "default-src 'self'; connect-src 'self' ws://127.0.0.1:*; style-src 'self' 'unsafe-inline'"
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": ["deb"],
+    "icon": [
+      "icons/icon.svg"
+    ],
+    "linux": {
+      "deb": {
+        "depends": ["python3 (>= 3.11)", "python3-pip"]
+      }
+    }
+  }
+}

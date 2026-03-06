@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ExecutionResult",
+  "type": "object",
+  "required": ["status", "results"],
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": ["success", "partial_failure", "error"]
+    },
+    "results": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["action_type", "target", "success"],
+        "properties": {
+          "action_type": { "type": "string" },
+          "target": { "type": "string" },
+          "success": { "type": "boolean" },
+          "output": { "type": "string" },
+          "error": { "type": ["string", "null"] },
+          "snapshot_id": { "type": ["string", "null"] }
+        }
+      }
+    },
+    "verification": {
+      "type": "object",
+      "properties": {
+        "passed": { "type": "boolean" },
+        "details": { "type": "array", "items": { "type": "string" } },
+        "rollback_triggered": { "type": "boolean" }
+      }
+    },
+    "explanation": { "type": "string" }
+  }
+}

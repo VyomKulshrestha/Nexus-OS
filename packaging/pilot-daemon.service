@@ -1,0 +1,14 @@
+[Unit]
+Description=Pilot AI Command Center Daemon
+Documentation=https://github.com/pilot/pilot
+After=default.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/pilot-daemon
+Restart=on-failure
+RestartSec=5
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=default.target

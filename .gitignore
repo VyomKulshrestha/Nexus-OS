@@ -1,0 +1,63 @@
+# Dependencies
+node_modules/
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+
+# Environment
+.env
+.env.*
+*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+pilot_*.log
+
+# Vault / Secrets
+vault.enc
+*.enc
+*.key
+*.pem
+
+# Test artifacts
+test_*.py
+test_*.txt
+test_*.json
+test_*.html
+*_output.txt
+*_results.json
+*_summary.txt
+*_detailed.txt
+raw_llm_debug.json
+prompt_dump*.txt
+
+# Temp files
+null
+*.tmp
+pilot_data_*.txt
+
+# Tauri build
+target/
+src-tauri/target/
+
+# Rust
+*.rs.bk
+
+# Frontend build
+ui/dist/
+ui/build/

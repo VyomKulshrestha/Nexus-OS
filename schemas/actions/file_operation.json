@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FileOperationParams",
+  "type": "object",
+  "required": ["path"],
+  "properties": {
+    "path": {
+      "type": "string",
+      "pattern": "^/[a-zA-Z0-9_./ -]+$",
+      "description": "Absolute file path"
+    },
+    "content": {
+      "type": ["string", "null"],
+      "description": "File content for write operations"
+    },
+    "destination": {
+      "type": ["string", "null"],
+      "pattern": "^/[a-zA-Z0-9_./ -]+$",
+      "description": "Destination path for move/copy operations"
+    },
+    "recursive": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

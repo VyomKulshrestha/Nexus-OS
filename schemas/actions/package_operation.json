@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PackageOperationParams",
+  "type": "object",
+  "required": ["name"],
+  "properties": {
+    "name": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9.+\\-]+$",
+      "description": "Debian package name"
+    },
+    "version": {
+      "type": ["string", "null"],
+      "description": "Specific version to install"
+    },
+    "repository": {
+      "type": ["string", "null"],
+      "description": "PPA or repository URL"
+    }
+  }
+}

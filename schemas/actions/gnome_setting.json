@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GnomeSettingParams",
+  "type": "object",
+  "required": ["schema", "key"],
+  "properties": {
+    "schema": {
+      "type": "string",
+      "pattern": "^org\\.[a-zA-Z0-9.-]+$",
+      "description": "GSettings schema ID (e.g. org.gnome.desktop.interface)"
+    },
+    "key": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]+$",
+      "description": "GSettings key name"
+    },
+    "value": {
+      "type": ["string", "null"],
+      "description": "Value to set (null for read operations)"
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ShellCommandParams",
+  "description": "Restricted shell command - must match safe command whitelist",
+  "type": "object",
+  "required": ["command"],
+  "properties": {
+    "command": {
+      "type": "string",
+      "enum": [
+        "echo", "cat", "ls", "df", "du", "whoami", "hostname", "uname",
+        "date", "uptime", "free", "lsb_release", "lscpu", "lsblk",
+        "ip", "ss", "ping", "dig", "nslookup",
+        "head", "tail", "wc", "sort", "uniq", "grep", "find", "which"
+      ],
+      "description": "Command must be in the safe whitelist"
+    },
+    "args": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Command arguments (no shell metacharacters allowed)"
+    },
+    "working_directory": {
+      "type": ["string", "null"],
+      "description": "Working directory for command execution"
+    }
+  }
+}
