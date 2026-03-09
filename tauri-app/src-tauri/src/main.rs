@@ -29,26 +29,23 @@ fn spawn_daemon() -> Option<Child> {
 
     let daemon_dir = possible_dirs.into_iter().find(|d| d.join("pilot").exists());
 
-    let child = if let Some(dir) = daemon_dir {
-        // Found the daemon directory — run from there
-        Command::new("python")
-            .args(["-m", "pilot.server"])
-            .current_dir(&dir)
-            .stdin(std::process::Stdio::null())
-            .stdout(std::process::Stdio::null())
-            .stderr(std::process::Stdio::null())
-            .spawn()
-            .ok()
-    } else {
-        // Fallback: try running globally (user may have `pip install -e .` done)
-        Command::new("python")
-            .args(["-m", "pilot.server"])
-            .stdin(std::process::Stdio::null())
-            .stdout(std::process::Stdio::null())
-            .stderr(std::process::Stdio::null())
-            .spawn()
-            .ok()
-    };
+    let mut cmd = Command::new("python");
+    cmd.args(["-m", "pilot.server"])
+        .stdin(std::process::Stdio::null())
+        .stdout(std::process::Stdio::null())
+        .stderr(std::process::Stdio::null());
+
+    if let Some(dir) = daemon_dir {
+        cmd.current_dir(&dir);
+    }
+
+    #[cfg(target_os = "windows")]
+    {
+        use std::os::windows::process::CommandExt;
+        cmd.creation_flags(0x08000000); // CREATE_NO_WINDOW
+    }
+
+    let child = cmd.spawn().ok();
 
     if child.is_some() {
         println!("[Cortex-OS] Python daemon spawned successfully");
